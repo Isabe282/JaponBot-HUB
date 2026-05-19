@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Bot, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { api, clearToken } from "../lib/api";
 import { toast } from "sonner";
@@ -19,16 +19,18 @@ export const Layout = ({ children }) => {
   return (
     <div className="min-h-screen relative">
       <div className="bg-grid absolute inset-0 pointer-events-none" />
-      <header className="sticky top-0 z-40 backdrop-blur-xl bg-black/40 border-b border-white/5">
+      <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-[#ff3333]/15">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" data-testid="nav-home-link" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 flex items-center justify-center glow-cyan">
-                <Bot className="text-black" size={22} />
-              </div>
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#ff3333]/30 glow-red">
+              <img
+                src="https://customer-assets.emergentagent.com/job_discord-bot-hub-51/artifacts/bccp3ojc_image.png"
+                alt="Japon Bot"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Panel</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Panel</span>
               <span className="text-lg font-semibold text-white -mt-1 group-hover:neon-text transition">Japon Bot</span>
             </div>
           </Link>
@@ -36,7 +38,7 @@ export const Layout = ({ children }) => {
             data-testid="logout-button"
             variant="ghost"
             onClick={handleLogout}
-            className="text-white/70 hover:text-white hover:bg-white/5"
+            className="text-white/70 hover:text-white hover:bg-[#ff3333]/10"
           >
             <LogOut size={16} className="mr-2" /> Salir
           </Button>

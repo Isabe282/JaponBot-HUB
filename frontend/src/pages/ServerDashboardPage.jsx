@@ -8,10 +8,10 @@ import { Layout } from "../components/Layout";
 import { api, extractError } from "../lib/api";
 
 const STAT_CONFIG = [
-  { key: "total", label: "Total tickets", icon: Ticket, color: "from-cyan-400 to-blue-500", accent: "text-cyan-300" },
-  { key: "abiertos", label: "Abiertos", icon: ListChecks, color: "from-emerald-400 to-green-600", accent: "text-emerald-300" },
-  { key: "cerrados", label: "Cerrados", icon: XCircle, color: "from-rose-400 to-red-600", accent: "text-rose-300" },
-  { key: "reclamados", label: "Reclamados", icon: Hand, color: "from-fuchsia-400 to-purple-600", accent: "text-fuchsia-300" },
+  { key: "total", label: "Total tickets", icon: Ticket, color: "from-[#ff3333] to-[#cc0000]", accent: "text-[#ff5555]" },
+  { key: "abiertos", label: "Abiertos", icon: ListChecks, color: "from-[#ff5555] to-[#cc0000]", accent: "text-[#ff7777]" },
+  { key: "cerrados", label: "Cerrados", icon: XCircle, color: "from-[#990000] to-[#660000]", accent: "text-[#cc0000]" },
+  { key: "reclamados", label: "Reclamados", icon: Hand, color: "from-[#ff3333] to-[#990000]", accent: "text-[#ff3333]" },
 ];
 
 const resolveStats = (raw) => {
@@ -60,7 +60,7 @@ export default function ServerDashboardPage() {
         data-testid="back-home-button"
         variant="ghost"
         onClick={() => navigate("/")}
-        className="text-white/60 hover:text-white hover:bg-white/5 mb-6"
+        className="text-white/60 hover:text-white hover:bg-[#ff3333]/10 mb-6"
       >
         <ArrowLeft size={16} className="mr-2" /> Volver a servidores
       </Button>
@@ -74,15 +74,15 @@ export default function ServerDashboardPage() {
               <img
                 src={server.icono || server.icon}
                 alt={server.nombre || "server"}
-                className="w-16 h-16 rounded-2xl border border-white/10 object-cover"
+                className="w-16 h-16 rounded-2xl border border-[#ff3333]/15 object-cover"
               />
             ) : (
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 border border-white/10 flex items-center justify-center text-cyan-300 font-bold text-2xl">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#cc0000]/30 to-[#ff3333]/10 border border-[#ff3333]/20 flex items-center justify-center text-[#ff5555] font-bold text-2xl">
                 {(server?.nombre || server?.name || "S").charAt(0).toUpperCase()}
               </div>
             )}
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Panel del servidor</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Panel del servidor</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-white mt-1">{server?.nombre || server?.name || `Servidor ${serverId}`}</h1>
               <p className="text-white/40 mono text-xs mt-1">ID: {serverId}</p>
             </div>
@@ -106,12 +106,12 @@ export default function ServerDashboardPage() {
 
           <div className="flex flex-wrap gap-3">
             <Link to={`/server/${serverId}/tickets`} data-testid="goto-tickets-button">
-              <Button className="bg-cyan-500 text-black font-semibold hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(0,240,255,0.55)]">
+              <Button className="bg-[#cc0000] text-white font-semibold hover:bg-[#990000] hover:shadow-[0_0_24px_rgba(204,0,0,0.65)]">
                 <Ticket size={16} className="mr-2" /> Ver tickets
               </Button>
             </Link>
             <Link to={`/server/${serverId}/config`} data-testid="goto-config-button">
-              <Button variant="outline" className="glass border-white/10 text-white hover:bg-white/5">
+              <Button variant="outline" className="glass border-[#ff3333]/20 text-white hover:bg-[#ff3333]/10">
                 <Settings size={16} className="mr-2" /> Configuración
               </Button>
             </Link>

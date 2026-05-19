@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <Layout>
       <div className="mb-10">
-        <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Inicio</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Inicio</span>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mt-2">Servidores conectados</h1>
         <p className="text-white/50 mt-2 max-w-xl">Selecciona un servidor para ver su panel de tickets, estadísticas y configuración.</p>
       </div>
@@ -65,11 +65,11 @@ export default function HomePage() {
                     <img
                       src={icon}
                       alt={name}
-                      className="w-14 h-14 rounded-xl border border-white/10 object-cover"
+                      className="w-14 h-14 rounded-xl border border-[#ff3333]/15 object-cover"
                       onError={(e) => { e.target.style.display = "none"; }}
                     />
                   ) : (
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 border border-white/10 flex items-center justify-center text-cyan-300 font-bold text-xl">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#cc0000]/30 to-[#ff3333]/10 border border-[#ff3333]/20 flex items-center justify-center text-[#ff5555] font-bold text-xl">
                       {name.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -85,7 +85,7 @@ export default function HomePage() {
                 <Button
                   data-testid={`view-server-${id}`}
                   onClick={() => navigate(`/server/${id}`)}
-                  className="bg-cyan-500 text-black font-semibold hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all"
+                  className="bg-[#cc0000] text-white font-semibold hover:bg-[#990000] hover:shadow-[0_0_24px_rgba(204,0,0,0.65)] transition-all"
                 >
                   Ver panel <ArrowRight size={16} className="ml-2" />
                 </Button>

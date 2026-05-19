@@ -49,13 +49,13 @@ export default function TranscriptPage() {
         data-testid="back-tickets-button"
         variant="ghost"
         onClick={() => navigate(`/server/${serverId}/tickets`)}
-        className="text-white/60 hover:text-white hover:bg-white/5 mb-6"
+        className="text-white/60 hover:text-white hover:bg-[#ff3333]/10 mb-6"
       >
         <ArrowLeft size={16} className="mr-2" /> Volver a tickets
       </Button>
 
       <div className="mb-8">
-        <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Transcript</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Transcript</span>
         <h1 className="text-3xl sm:text-4xl font-bold text-white mt-2">Conversación del ticket</h1>
         <p className="text-white/40 mono text-xs mt-2">Ticket ID: {ticketId}</p>
       </div>

@@ -52,13 +52,13 @@ export default function ConfigPage() {
         data-testid="back-dashboard-button"
         variant="ghost"
         onClick={() => navigate(`/server/${serverId}`)}
-        className="text-white/60 hover:text-white hover:bg-white/5 mb-6"
+        className="text-white/60 hover:text-white hover:bg-[#ff3333]/10 mb-6"
       >
         <ArrowLeft size={16} className="mr-2" /> Volver al panel
       </Button>
 
       <div className="mb-8">
-        <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Configuración</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Configuración</span>
         <h1 className="text-3xl sm:text-4xl font-bold text-white mt-2">Ajustes del servidor</h1>
         <p className="text-white/50 mt-2 max-w-xl">Define los IDs de Discord para que Japon Bot pueda gestionar tickets correctamente.</p>
         <p className="text-white/40 mono text-xs mt-2">Servidor: {serverId}</p>
@@ -80,7 +80,7 @@ export default function ConfigPage() {
                   value={form[f.key]}
                   onChange={(e) => set(f.key, e.target.value)}
                   placeholder={f.placeholder}
-                  className="pl-10 bg-black/40 border-white/10 text-white placeholder:text-white/30 focus-visible:border-cyan-400 focus-visible:ring-cyan-400/30 h-11"
+                  className="pl-10 bg-[#1a0a0a]/70 border-[#ff3333]/20 text-white placeholder:text-white/30 focus-visible:border-[#ff3333] focus-visible:ring-[#ff3333]/30 h-11"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function ConfigPage() {
             type="submit"
             disabled={saving}
             data-testid="config-save-button"
-            className="bg-cyan-500 text-black font-semibold hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(0,240,255,0.55)] transition-all"
+            className="bg-[#cc0000] text-white font-semibold hover:bg-[#990000] hover:shadow-[0_0_24px_rgba(204,0,0,0.65)] transition-all"
           >
             {saving ? <Loader2 className="animate-spin mr-2" size={16} /> : <Save size={16} className="mr-2" />}
             {saving ? "Guardando..." : "Guardar configuración"}

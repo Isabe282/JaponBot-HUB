@@ -52,9 +52,9 @@ const formatDate = (d) => {
 
 const StatusBadge = ({ status }) => {
   const map = {
-    abierto: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-    cerrado: "bg-rose-500/15 text-rose-300 border-rose-500/30",
-    reclamado: "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30",
+    abierto: "bg-[#ff5555]/15 text-[#ff7777] border-[#ff5555]/30",
+    cerrado: "bg-[#660000]/40 text-[#cc6666] border-[#660000]/50",
+    reclamado: "bg-[#cc0000]/20 text-[#ff3333] border-[#cc0000]/40",
   };
   return (
     <Badge className={`${map[status] || "bg-white/10 text-white/70 border-white/15"} border capitalize font-medium`}>
@@ -124,13 +124,13 @@ export default function TicketsPage() {
         data-testid="back-dashboard-button"
         variant="ghost"
         onClick={() => navigate(`/server/${serverId}`)}
-        className="text-white/60 hover:text-white hover:bg-white/5 mb-6"
+        className="text-white/60 hover:text-white hover:bg-[#ff3333]/10 mb-6"
       >
         <ArrowLeft size={16} className="mr-2" /> Volver al panel
       </Button>
 
       <div className="mb-8">
-        <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-bold">Tickets</span>
+        <span className="text-xs uppercase tracking-[0.25em] text-[#ff3333] font-bold">Tickets</span>
         <h1 className="text-3xl sm:text-4xl font-bold text-white mt-2">Gestión de tickets</h1>
       </div>
 
@@ -142,17 +142,17 @@ export default function TicketsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar por usuario o razón..."
-            className="pl-9 bg-black/40 border-white/10 text-white placeholder:text-white/30 focus-visible:border-cyan-400 focus-visible:ring-cyan-400/30"
+            className="pl-9 bg-[#1a0a0a]/70 border-[#ff3333]/20 text-white placeholder:text-white/30 focus-visible:border-[#ff3333] focus-visible:ring-[#ff3333]/30"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
           <SelectTrigger
             data-testid="ticket-status-filter"
-            className="md:w-[200px] bg-black/40 border-white/10 text-white"
+            className="md:w-[200px] bg-[#1a0a0a]/70 border-[#ff3333]/20 text-white"
           >
             <SelectValue placeholder="Estado" />
           </SelectTrigger>
-          <SelectContent className="bg-zinc-950 border-white/10 text-white">
+          <SelectContent className="bg-[#1a0a0a] border-[#ff3333]/20 text-white">
             <SelectItem value="all">Todos</SelectItem>
             <SelectItem value="abierto">Abiertos</SelectItem>
             <SelectItem value="cerrado">Cerrados</SelectItem>
@@ -167,7 +167,7 @@ export default function TicketsPage() {
         <div className="glass overflow-hidden">
           <Table data-testid="tickets-table">
             <TableHeader>
-              <TableRow className="hover:bg-transparent border-white/10">
+              <TableRow className="hover:bg-transparent border-[#ff3333]/15">
                 <TableHead className="text-white/50 uppercase tracking-wider text-xs">ID</TableHead>
                 <TableHead className="text-white/50 uppercase tracking-wider text-xs">Usuario</TableHead>
                 <TableHead className="text-white/50 uppercase tracking-wider text-xs">Razón</TableHead>
@@ -178,7 +178,7 @@ export default function TicketsPage() {
             </TableHeader>
             <TableBody>
               {filtered.length === 0 && (
-                <TableRow className="hover:bg-transparent border-white/5">
+                <TableRow className="hover:bg-transparent border-[#ff3333]/10">
                   <TableCell colSpan={6} className="text-center py-12 text-white/40">
                     No hay tickets que coincidan con los filtros.
                   </TableCell>
@@ -194,7 +194,7 @@ export default function TicketsPage() {
                   <TableRow
                     key={id}
                     data-testid={`ticket-row-${id}`}
-                    className="hover:bg-white/5 border-white/5"
+                    className="hover:bg-[#ff3333]/10 border-[#ff3333]/10"
                   >
                     <TableCell className="text-white/80 mono text-xs">{id}</TableCell>
                     <TableCell className="text-white font-medium">{user}</TableCell>
@@ -208,7 +208,7 @@ export default function TicketsPage() {
                           variant="outline"
                           data-testid={`view-transcript-${id}`}
                           onClick={() => navigate(`/server/${serverId}/transcript/${id}`)}
-                          className="glass border-white/10 text-white hover:bg-white/5 h-8"
+                          className="glass border-[#ff3333]/20 text-white hover:bg-[#ff3333]/10 h-8"
                         >
                           <FileText size={14} className="mr-1" /> Transcript
                         </Button>
@@ -217,7 +217,7 @@ export default function TicketsPage() {
                             size="sm"
                             data-testid={`close-ticket-${id}`}
                             onClick={() => setConfirmTicket(t)}
-                            className="bg-rose-500/90 hover:bg-rose-500 text-white h-8"
+                            className="bg-[#cc0000] hover:bg-[#990000] text-white h-8"
                           >
                             <X size={14} className="mr-1" /> Cerrar
                           </Button>
@@ -235,12 +235,12 @@ export default function TicketsPage() {
       <Dialog open={!!confirmTicket} onOpenChange={(o) => !o && setConfirmTicket(null)}>
         <DialogContent
           data-testid="close-ticket-modal"
-          className="glass border-white/10 text-white"
+          className="glass border-[#ff3333]/15 text-white"
         >
           <DialogHeader>
             <DialogTitle className="text-white">¿Cerrar este ticket?</DialogTitle>
             <DialogDescription className="text-white/60">
-              Esta acción cerrará el ticket <span className="mono text-cyan-300">#{confirmTicket?.id || confirmTicket?._id}</span>. ¿Deseas continuar?
+              Esta acción cerrará el ticket <span className="mono text-[#ff5555]">#{confirmTicket?.id || confirmTicket?._id}</span>. ¿Deseas continuar?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2">
@@ -248,7 +248,7 @@ export default function TicketsPage() {
               data-testid="close-ticket-modal-cancel"
               variant="outline"
               onClick={() => setConfirmTicket(null)}
-              className="glass border-white/10 text-white hover:bg-white/5"
+              className="glass border-[#ff3333]/20 text-white hover:bg-[#ff3333]/10"
             >
               Cancelar
             </Button>
@@ -256,7 +256,7 @@ export default function TicketsPage() {
               data-testid="close-ticket-modal-confirm"
               onClick={handleClose}
               disabled={closing}
-              className="bg-rose-500 hover:bg-rose-400 text-white"
+              className="bg-[#cc0000] hover:bg-[#990000] text-white"
             >
               {closing ? <Loader2 className="animate-spin mr-2" size={16} /> : <X size={16} className="mr-2" />}
               Cerrar ticket
