@@ -32,6 +32,7 @@ import { ErrorState } from "../components/ErrorState";
 import { Layout } from "../components/Layout";
 import { api, extractError } from "../lib/api";
 import { toast } from "sonner";
+import { successToast } from "../lib/sounds";
 
 const normalizeStatus = (t) => {
   const raw = (t.estado || t.status || "").toString().toLowerCase();
@@ -108,7 +109,7 @@ export default function TicketsPage() {
     try {
       const canalId = confirmTicket.canalId || confirmTicket.channelId || confirmTicket.canal || confirmTicket.id;
       await api.post("/cerrar-ticket", { servidorId: serverId, canalId });
-      toast.success("Ticket cerrado correctamente");
+      successToast("Ticket cerrado correctamente");
       setConfirmTicket(null);
       await load();
     } catch (err) {

@@ -6,6 +6,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { api, setToken, extractError } from "../lib/api";
 import { toast } from "sonner";
+import { successToast } from "../lib/sounds";
 
 const BG_URL =
   "https://customer-assets.emergentagent.com/job_discord-bot-hub-51/artifacts/h3yf566i_image.png";
@@ -23,7 +24,7 @@ export default function LoginPage() {
     try {
       const { data } = await api.post("/auth/login", { password });
       setToken(data.token);
-      toast.success("Bienvenido al panel");
+      successToast("Bienvenido al panel");
       navigate("/");
     } catch (err) {
       toast.error(extractError(err));

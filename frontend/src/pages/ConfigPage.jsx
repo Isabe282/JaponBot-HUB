@@ -7,6 +7,7 @@ import { Label } from "../components/ui/label";
 import { Layout } from "../components/Layout";
 import { api, extractError } from "../lib/api";
 import { toast } from "sonner";
+import { successToast } from "../lib/sounds";
 
 const FIELDS = [
   { key: "nombreServidor", label: "Nombre del servidor", icon: Settings, placeholder: "Ej: Comunidad Japón" },
@@ -38,7 +39,7 @@ export default function ConfigPage() {
     setSaving(true);
     try {
       await api.post("/configurar-servidor", { servidorId: serverId, ...form });
-      toast.success("Configuración guardada correctamente");
+      successToast("Configuración guardada correctamente");
     } catch (err) {
       toast.error(extractError(err));
     } finally {

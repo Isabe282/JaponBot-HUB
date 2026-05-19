@@ -127,3 +127,7 @@ input:-webkit-autofill {
   background: rgba(204, 0, 0, 0.55);
   color: #fff;
 }
+
+#emergent-badge {
+  display: none !important;
+}

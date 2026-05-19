@@ -17,10 +17,18 @@ export const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen relative">
-      <div className="bg-grid absolute inset-0 pointer-events-none" />
+    <div className="min-h-screen relative isolate">
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+        style={{
+          backgroundImage:
+            "url('https://customer-assets.emergentagent.com/job_discord-bot-hub-51/artifacts/h3yf566i_image.png')",
+        }}
+      />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-[#0a0a0a]/85 via-[#0a0a0a]/80 to-[#0a0a0a]/95 pointer-events-none" />
+      <div className="bg-grid fixed inset-0 z-0 pointer-events-none opacity-50" />
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-[#ff3333]/15">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative z-10">
           <Link to="/" data-testid="nav-home-link" className="flex items-center gap-3 group">
             <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#ff3333]/30 glow-red">
               <img
@@ -44,7 +52,7 @@ export const Layout = ({ children }) => {
           </Button>
         </div>
       </header>
-      <main className="relative max-w-7xl mx-auto px-6 py-10">{children}</main>
+      <main className="relative z-10 max-w-7xl mx-auto px-6 py-10">{children}</main>
     </div>
   );
 };
