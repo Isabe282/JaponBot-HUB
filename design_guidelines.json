@@ -1,0 +1,136 @@
+{
+  "project_name": "Japon Bot Dashboard",
+  "theme": "dark",
+  "archetype": "Electric & Neon",
+  "design_philosophy": "A modern, high-end command center for a Discord bot. It uses deep obsidian backgrounds, crystal glassmorphism for layered depth, and sharp neon accents (cyan and purple) to indicate state and interactivity. Avoids generic SaaS templates by utilizing asymmetrical grids and glowing edges.",
+  "typography": {
+    "fonts": {
+      "headings": "Outfit",
+      "body": "Manrope",
+      "mono": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl tracking-tight font-bold text-white",
+      "h2": "text-2xl sm:text-3xl tracking-tight font-semibold text-white",
+      "h3": "text-xl sm:text-2xl font-medium text-white/90",
+      "body": "text-base text-white/70 leading-relaxed",
+      "small": "text-sm text-white/50",
+      "overline": "text-xs uppercase tracking-[0.2em] text-cyan-400 font-bold"
+    },
+    "rules": [
+      "No Inter, Roboto, or standard fonts for headings.",
+      "Headings must have tight tracking (-0.025em or -0.05em).",
+      "Overlines must be uppercase with wide tracking."
+    ]
+  },
+  "colors": {
+    "background": {
+      "main": "#09090B",
+      "glass": "rgba(255, 255, 255, 0.03)",
+      "glass_hover": "rgba(255, 255, 255, 0.06)"
+    },
+    "accents": {
+      "primary": "#00F0FF",
+      "secondary": "#B026FF",
+      "success": "#00FF66",
+      "danger": "#FF003C",
+      "warning": "#FFD700"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "rgba(255, 255, 255, 0.7)",
+      "muted": "rgba(255, 255, 255, 0.4)"
+    },
+    "borders": {
+      "glass": "rgba(255, 255, 255, 0.1)",
+      "glass_active": "rgba(0, 240, 255, 0.5)"
+    },
+    "rules": [
+      "Never use pure black or grey without a slight indigo/blue tint.",
+      "Neon colors should be used for interactive states (hover/focus/active) and status indicators.",
+      "Glassmorphism must have a 1px border to separate it from the background."
+    ]
+  },
+  "spacing_and_layout": {
+    "system": "Tailwind scale with generous padding.",
+    "containers": "All containers with borders/glass must use p-6 or p-8.",
+    "grid_modes": {
+      "bento_dashboard": "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 for stats.",
+      "server_list": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    }
+  },
+  "components": {
+    "surface_strategy": {
+      "glassmorphism": "Use 'bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl' for all main cards, modals, and nav bars.",
+      "buttons": "Primary: bg-cyan-500 text-black font-bold hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all. Secondary: glassmorphism style."
+    },
+    "icons": {
+      "library": "lucide-react"
+    },
+    "shadcn_overrides": {
+      "table": "Remove solid backgrounds. Use glassmorphism rows with hover:bg-white/5. Text must be high contrast.",
+      "dialog": "Apply heavy backdrop blur to the overlay (backdrop-blur-sm bg-black/80). Dialog content uses glassmorphism.",
+      "input": "bg-black/50 border-white/10 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-white placeholder:text-white/30"
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "category": "login_background",
+        "url": "https://static.prod-images.emergentagent.com/jobs/d1780a56-8ecc-422b-831c-41fa514cd86b/images/7f92e8a5ec001dea3c5b30d7552cb83f87047ebc3e9cdf36fb78caff1041f87f.png",
+        "description": "Deep dark obsidian background with glowing neon cyan/purple rays. Use this as a full-screen fixed background on the login page with object-cover."
+      }
+    ]
+  },
+  "requirements": {
+    "api_integration": {
+      "base_url": "https://japon-bot-production.up.railway.app",
+      "headers": {
+        "x-api-key": "japonbot2024secreto"
+      }
+    },
+    "views": [
+      {
+        "name": "Login",
+        "description": "Simple password login. Uses login_background. Center glassmorphism card."
+      },
+      {
+        "name": "Inicio (Servers)",
+        "description": "Grid of server cards (icon, name, member count, 'Ver panel' button)."
+      },
+      {
+        "name": "Panel del Servidor",
+        "description": "Dashboard view. 4 stat cards (Total tickets, Open, Closed, Claimed) using the 'Control Room' bento grid."
+      },
+      {
+        "name": "Tickets",
+        "description": "Table view of tickets. Columns: ID, User, Reason, Status, Date. Filters: Dropdown for Status, Input for searching User/Reason. Actions: Close Ticket (triggers confirmation modal), View Transcript."
+      },
+      {
+        "name": "Transcript",
+        "description": "Chat-style message list (username: message) with dates. Visually styled like Discord messages."
+      },
+      {
+        "name": "Configuración",
+        "description": "Settings form (categoriaTickets, rolStaff, canalLogs, nombreServidor). Save button with loading state."
+      }
+    ],
+    "ux_details": [
+      "Include loading spinners during API calls.",
+      "Handle API errors gracefully (show error states).",
+      "Use sonner for toast notifications on success/error (e.g., config saved, ticket closed)."
+    ]
+  },
+  "testing": {
+    "data_testid_rules": "ALL interactive elements (inputs, buttons, table rows, links, modals, filters) MUST include a 'data-testid' attribute in kebab-case, describing their role (e.g., 'login-submit-button', 'ticket-status-filter', 'close-ticket-modal-confirm')."
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark theme and glassmorphism styling defined in surface_strategy.",
+    "Do not use generic Shadcn card styles (white/gray backgrounds). Replace them with the provided glassmorphism classes.",
+    "Ensure the layout is responsive, using grid-cols-1 for mobile and expanding for desktop.",
+    "Implement Sonner toasts for all form submissions and actions.",
+    "Install and use Outfit and Manrope fonts via Google Fonts in index.css.",
+    "Make sure the API header 'x-api-key: japonbot2024secreto' is included in EVERY fetch request to the Railway API.",
+    "Use lucide-react for all iconography."
+  ]
+}
