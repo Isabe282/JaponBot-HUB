@@ -4,8 +4,7 @@
       "entrypoint": "frontend",
       "routePrefix": "/",
       "framework": "create-react-app",
-      "buildCommand": "npm install && npm run build",
-      "outputDirectory": "build"
+      "buildCommand": "npm install && npm run build"
     },
     "backend": {
       "entrypoint": "backend",
